@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Platform berbagi opini dan artikel berkualitas tentang pendidikan, sosial budaya, dan ekonomi">
+    <meta property="og:title" content="Opini & Artikel - Platform Analisis Mendalam">
+    <meta property="og:description" content="Artikel berkualitas tentang pendidikan, sosial budaya, dan ekonomi">
+    <meta property="og:type" content="website">
+    <title>Opini &amp; Artikel - Pendidikan, Sosial Budaya, Ekonomi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="nav-logo">
+                <h2>Opini &amp; Artikel</h2>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#pendidikan" class="nav-link" data-category="Pendidikan">Pendidikan</a></li>
+                    <li><a href="#sosial-budaya" class="nav-link" data-category="Sosial Budaya">Sosial Budaya</a></li>
+                    <li><a href="#ekonomi" class="nav-link" data-category="Ekonomi">Ekonomi</a></li>
+                    <li><a href="#tentang" class="nav-link" data-page="about">Tentang</a></li>
+                    <li><a href="#kontak" class="nav-link" data-page="contact">Kontak</a></li>
+                </ul>
+            </div>
+            <div class="nav-actions">
+                <button class="search-toggle" id="searchToggle" aria-label="Toggle search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+        <div class="search-box" id="searchBox">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Cari artikel..." class="search-input">
+                <button class="search-close" id="searchClose" aria-label="Close search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <!-- Hero Section -->
+            <section class="hero" id="hero">
+                <div class="hero-content">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-text">
+                        <span class="category-badge" style="background-color: #3498DB;">Pendidikan</span>
+                        <h1 class="hero-title">Transformasi Digital dalam Pendidikan Indonesia</h1>
+                        <p class="hero-excerpt">Bagaimana teknologi mengubah lanskap pendidikan di Indonesia dan tantangan yang dihadapi dalam implementasinya.</p>
+                        <div class="hero-meta">
+                            <span>Dr. Ahmad Santoso</span>
+                            <span>•</span>
+                            <span>5 menit</span>
+                        </div>
+                        <button class="btn-primary" onclick="app.showArticle(1)">Baca Selengkapnya</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Articles Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Artikel Terbaru</h2>
+                        <p>Baca opini dan analisis mendalam tentang berbagai topik</p>
+                    </div>
+                    <div class="articles-grid" id="articlesGrid">
+                        <!-- Articles will be rendered here by JavaScript -->
+                    </div>
+                    <div class="text-center" style="margin-top: 40px;">
+                        <button class="btn-secondary" id="loadMoreBtn" style="display: none;">Lihat Lebih Banyak</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories Section -->
+            <section class="section" style="background-color: var(--color-bg-1);">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Kategori</h2>
+                        <p>Jelajahi artikel berdasarkan topik</p>
+                    </div>
+                    <div class="categories-grid">
+                        <div class="category-card" data-category="Pendidikan">
+                            <div class="category-icon">📚</div>
+                            <h3>Pendidikan</h3>
+                            <p>Artikel seputar dunia pendidikan dan pembelajaran</p>
+                            <span class="article-count" id="countPendidikan">0 artikel</span>
+                        </div>
+                        <div class="category-card" data-category="Sosial Budaya">
+                            <div class="category-icon">🌏</div>
+                            <h3>Sosial Budaya</h3>
+                            <p>Dinamika sosial, budaya, dan masyarakat</p>
+                            <span class="article-count" id="countSosialBudaya">0 artikel</span>
+                        </div>
+                        <div class="category-card" data-category="Ekonomi">
+                            <div class="category-icon">💼</div>
+                            <h3>Ekonomi</h3>
+                            <p>Analisis ekonomi dan pemberdayaan masyarakat</p>
+                            <span class="article-count" id="countEkonomi">0 artikel</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="section">
+                <div class="container">
+                    <div class="about-brief">
+                        <h2>Tentang Platform Ini</h2>
+                        <p>Platform berbagi opini dan artikel berkualitas tentang isu-isu pendidikan, sosial budaya, dan ekonomi yang relevan dengan kehidupan masyarakat Indonesia.</p>
+                        <div class="social-links">
+                            <a href="#" target="_blank" aria-label="Twitter">🐦</a>
+                            <a href="#" target="_blank" aria-label="Facebook">📘</a>
+                            <a href="#" target="_blank" aria-label="LinkedIn">💼</a>
+                            <a href="#" target="_blank" aria-label="Instagram">📷</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Article Detail Page -->
+        <div id="articlePage" class="page">
+            <article class="article-detail" id="articleDetail">
+                <!-- Article content will be rendered here by JavaScript -->
+            </article>
+        </div>
+
+        <!-- Category Page -->
+        <div id="categoryPage" class="page">
+            <section class="section">
+                <div class="container">
+                    <div class="category-header" id="categoryHeader">
+                        <!-- Category header will be rendered here -->
+                    </div>
+                    <div class="articles-grid" id="categoryArticlesGrid">
+                        <!-- Filtered articles will be rendered here -->
+                    </div>
+                    <div id="noResults" class="no-results" style="display: none;">
+                        <h3>Tidak ada artikel ditemukan</h3>
+                        <p>Coba kata kunci atau kategori lain</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="aboutPage" class="page">
+            <section class="section">
+                <div class="container">
+                    <div class="about-content">
+                        <h1>Tentang Kami</h1>
+                        <div class="about-detail">
+                            <h2>Misi Kami</h2>
+                            <p>Platform berbagi opini dan artikel berkualitas tentang isu-isu pendidikan, sosial budaya, dan ekonomi yang relevan dengan kehidupan masyarakat Indonesia.</p>
+                            
+                            <h2>Deskripsi</h2>
+                            <p>Website ini didedikasikan untuk menyajikan analisis mendalam dan perspektif kritis terhadap berbagai fenomena sosial, pendidikan, dan ekonomi. Kami percaya bahwa diskusi yang berkualitas dapat mendorong perubahan positif dalam masyarakat.</p>
+                            
+                            <h2>Hubungi Kami</h2>
+                            <p>Kami terbuka untuk kolaborasi dan masukan dari pembaca. Silakan hubungi kami melalui media sosial yang tersedia.</p>
+                            
+                            <div class="social-links" style="margin-top: 30px;">
+                                <a href="#" target="_blank" aria-label="Twitter">🐦 Twitter</a>
+                                <a href="#" target="_blank" aria-label="Facebook">📘 Facebook</a>
+                                <a href="#" target="_blank" aria-label="LinkedIn">💼 LinkedIn</a>
+                                <a href="#" target="_blank" aria-label="Instagram">📷 Instagram</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contactPage" class="page">
+            <section class="section">
+                <div class="container">
+                    <div class="contact-content">
+                        <h1>Kontak</h1>
+                        <div class="contact-detail">
+                            <p>Untuk pertanyaan, kolaborasi, atau masukan, silakan hubungi kami melalui:</p>
+                            
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <h3>📧 Email</h3>
+                                    <p>kontak@opiniartikel.com</p>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <h3>🌐 Media Sosial</h3>
+                                    <div class="social-links">
+                                        <a href="#" target="_blank">🐦 Twitter</a>
+                                        <a href="#" target="_blank">📘 Facebook</a>
+                                        <a href="#" target="_blank">💼 LinkedIn</a>
+                                        <a href="#" target="_blank">📷 Instagram</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <h3>⏰ Jam Operasional</h3>
+                                    <p>Senin - Jumat: 09:00 - 17:00 WIB</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Opini &amp; Artikel</h3>
+                    <p>Platform analisis mendalam tentang pendidikan, sosial budaya, dan ekonomi.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="#home" data-page="home">Home</a></li>
+                        <li><a href="#tentang" data-page="about">Tentang</a></li>
+                        <li><a href="#kontak" data-page="contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kategori</h4>
+                    <ul>
+                        <li><a href="#pendidikan" data-category="Pendidikan">Pendidikan</a></li>
+                        <li><a href="#sosial-budaya" data-category="Sosial Budaya">Sosial Budaya</a></li>
+                        <li><a href="#ekonomi" data-category="Ekonomi">Ekonomi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank" aria-label="Twitter">🐦</a>
+                        <a href="#" target="_blank" aria-label="Facebook">📘</a>
+                        <a href="#" target="_blank" aria-label="LinkedIn">💼</a>
+                        <a href="#" target="_blank" aria-label="Instagram">📷</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Opini &amp; Artikel. All rights reserved.</p>
+                <p>Built with GitHub Pages</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
